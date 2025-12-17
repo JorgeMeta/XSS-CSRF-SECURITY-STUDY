@@ -1,0 +1,22 @@
+{
+  "name": "task-manager-angularjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "sass app/styles/main.scss app/styles/main.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.8.3",
+    "angular-route": "^1.8.3",
+    "angular-sanitize": "^1.8.3",
+    "json-server": "^1.0.0-beta.3"
+  },
+  "devDependencies": {
+    "sass": "^1.96.0"
+  }
+}

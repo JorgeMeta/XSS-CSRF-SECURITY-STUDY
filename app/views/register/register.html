@@ -1,0 +1,17 @@
+<div class="register-container">
+  <h1>Create Account</h1>
+  <div class="register-card-container">
+    <input ng-model="vm.name" type="text" placeholder="Nome completo" />
+    <input ng-model="vm.email" type="email" placeholder="Email" />
+    <input ng-model="vm.password" type="password" placeholder="Senha" />
+    <button ng-click="vm.register()">Registrar</button>
+    <p class="register-link">
+      Do you already have an account?
+      <a href="" ng-click="vm.goToLogin()">Enter</a>
+    </p>
+  </div>
+</div>
+<div ng-repeat="user in vm.users">
+  <!-- 🚨 propositalmente vulnerável -->
+  <p ng-bind="vm.userInput"></p>
+</div>

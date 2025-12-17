@@ -1,0 +1,180 @@
+@charset "UTF-8";
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.login-container h1 {
+  text-align: center;
+  letter-spacing: 2px;
+  color: rgb(7, 99, 219);
+}
+.login-container .login-card-container {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.login-container .login-card-container input {
+  height: 30px;
+  border-radius: 5px;
+  padding-left: 10px;
+  border: 1px solid #ccc;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  font-size: 15px;
+}
+.login-container .login-card-container input:focus {
+  outline: none;
+  border-color: #2d67ff;
+  box-shadow: 0 0 0 2px rgba(45, 103, 255, 0.2);
+}
+.login-container .login-card-container button {
+  height: 35px;
+  cursor: pointer;
+  background-color: rgb(17, 120, 255);
+  color: white;
+  font-size: 18px;
+  letter-spacing: 2px;
+  border-radius: 5px;
+  border: none;
+}
+.login-container .login-card-container button:hover {
+  background-color: rgb(7, 99, 219);
+}
+.login-container .login-card-container .register-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgb(43, 43, 43);
+}
+.login-container .login-card-container .register-link a {
+  color: rgb(17, 120, 255);
+  text-decoration: none;
+  margin-top: 10px;
+}
+.login-container .login-card-container .register-link a:hover {
+  color: rgb(2, 80, 182);
+}
+
+.register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.register-container h1 {
+  text-align: center;
+  letter-spacing: 2px;
+  color: rgb(7, 99, 219);
+}
+.register-container .register-card-container {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.register-container .register-card-container input {
+  height: 30px;
+  border-radius: 5px;
+  padding-left: 10px;
+  border: 1px solid #ccc;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  font-size: 15px;
+}
+.register-container .register-card-container input:focus {
+  outline: none;
+  border-color: #2d67ff;
+  box-shadow: 0 0 0 2px rgba(45, 103, 255, 0.2);
+}
+.register-container button {
+  height: 35px;
+  cursor: pointer;
+  background-color: rgb(17, 120, 255);
+  color: white;
+  font-size: 18px;
+  letter-spacing: 2px;
+  border-radius: 5px;
+  border: none;
+}
+.register-container button:hover {
+  background-color: rgb(7, 99, 219);
+}
+.register-container .register-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgb(43, 43, 43);
+}
+.register-container .register-link a {
+  color: rgb(17, 120, 255);
+  text-decoration: none;
+  margin-top: 10px;
+}
+.register-container .register-link a:hover {
+  color: rgb(2, 80, 182);
+}
+
+.toast {
+  position: fixed;
+  bottom: 24px; /* distância do rodapé */
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  z-index: 9999;
+  min-width: 260px;
+  max-width: 90vw;
+  padding: 14px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  background: #333;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  animation: toast-in 0.3s ease forwards;
+}
+.toast.leaving {
+  animation: toast-out 0.25s ease forwards;
+}
+.toast.success {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+.toast.error {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+.toast.warning {
+  background: linear-gradient(135deg, #f39c12, #d68910);
+}
+.toast.info {
+  background: linear-gradient(135deg, #3498db, #2e86c1);
+}
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+@keyframes toast-out {
+  from {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(40px) scale(0.95);
+  }
+}
+
+* {
+  font-family: "Roboto";
+}
+
+/*# sourceMappingURL=main.css.map */
