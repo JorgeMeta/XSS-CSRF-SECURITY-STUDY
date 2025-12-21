@@ -193,5 +193,23 @@
       "password": "12343"
     }
   ],
-  "notes": []
+  "notes": [],
+  "company-users": [
+    {
+      "id": "1b55",
+      "name": "jorge",
+      "email": "attiejorge89@gmail.com",
+      "role": "admin",
+      "status": "active",
+      "createdAt": "Fri Dec 19 2025"
+    },
+    {
+      "id": "0579",
+      "name": "Jorge",
+      "email": "attiejorge89@gmail.com",
+      "role": "user",
+      "status": "active",
+      "createdAt": "Sat Dec 20 2025"
+    }
+  ]
 }

@@ -1,0 +1,84 @@
+<div class="table-responsive">
+  <table class="users-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Cargo</th>
+        <th>Status</th>
+        <th class="actions-header">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-if="vm.loading">
+        <td colspan="6" class="loading-cell">
+          <span class="loading-spinner"> Carregando ususários... </span>
+        </td>
+      </tr>
+      <tr ng-if="vm.loading && vm.user.length === 0">
+        <td colspan="6" class="empty-cell">
+          <i class="material-icons">people_outline</i>
+          Nenhum usuário econtrado
+        </td>
+      </tr>
+      <tr
+        ng-repeat="user in vm.users track by user.id"
+        ng-if="vm.loading && vm.users.length > 0"
+      >
+        <td data-label="ID" class="user-id">
+          <span>#{{ user.id }}</span>
+        </td>
+        <td data-label="Nome" class="user-name">
+          <div class="user-avatar">
+            <div class="avatar">
+              {{ vm.getInitials(user.name) }}
+            </div>
+            <div class="user-info">
+              <strong>
+                {{ user.name }}
+                <small>{{ vm.formatDate(user.createdAt) }}</small>
+              </strong>
+            </div>
+          </div>
+        </td>
+        <td data-label="Email" class="user-email">
+          <i class="material-icons email-icon">email</i>
+          {{ user.email }}
+        </td>
+        <td data-label="Cargo" class="user-role">
+          {{
+            user.role === "admin"
+              ? "Administrador"
+              : user.role === "manager"
+              ? "Gerente"
+              : "Usuário"
+          }}
+        </td>
+        <td>
+          <span class="status-badge" ng-class="user.status">
+            {{ user.status === "active" ? "Ativo" : "Inativo" }}
+          </span>
+        </td>
+        <td data-label="Ações" class="user-actions">
+          <div class="actions-buttons">
+            <button
+              class="btn-action view"
+              ng-click="vm.onEdit({user: user})"
+              title="Editar"
+            >
+              <i class="material-icons">edit</i>
+            </button>
+            <button
+              class="btn-actions delete"
+              ng-click="vm.onDelete({user: user})"
+              title="Excluir"
+            >
+              <i class="material-icons">delete</i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

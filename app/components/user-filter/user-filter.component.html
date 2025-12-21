@@ -1,0 +1,33 @@
+<div class="filter-contaienr">
+  <div class="filter-actions">
+    <button class="btn btn-primary" ng-click="vm.onCreate()">
+      <i class="material-icons">person_add</i>
+      <span class="btn-text">Novo Usuário</span>
+    </button>
+    <div class="search-continer">
+      <div class="search-box">
+        <i class="material-icons search-icon">search</i>
+        <input
+          type="text"
+          ng-model="vm.searchText"
+          ng-keyup="vm.handleKeyPress($event)"
+          placeholder="Buscar por nome ou email..."
+        />
+        <button
+          class="btn-clear"
+          ng-if="vm.searchText"
+          ng-click="vm.clear()"
+          title="Limpar busca"
+        >
+          <i class="material-icons">close</i>
+        </button>
+        <button class="btn-seach" ng-click="vm.search()" title="Buscar">
+          <i class="material-icons">search</i>
+        </button>
+      </div>
+      <div class="filter-info" ng-if="vm.serachText">
+        Buscando por: {{ vm.searchText }}
+      </div>
+    </div>
+  </div>
+</div>

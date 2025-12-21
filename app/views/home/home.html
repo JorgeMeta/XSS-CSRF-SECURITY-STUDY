@@ -1,0 +1,28 @@
+<div class="home-container">
+  <h1>Gerenciamento de Usuários</h1>
+
+  <!-- Componente de Filtro -->
+  <user-filter on-search="vm.handleSearch(text)" on-create="vm.createUser()">
+  </user-filter>
+
+  <!-- Componente de Tabela -->
+  <user-table
+    users="vm.users"
+    loading="vm.loading"
+    on-view="vm.viewUser(user)"
+    on-edit="vm.editUser(user)"
+    on-delete="vm.deleteUser(user)"
+  >
+  </user-table>
+
+  <!-- Componente de Modal -->
+  <user-modal
+    is-open="vm.modal.isOpen"
+    mode="vm.modal.mode"
+    user="vm.modal.user"
+    title="vm.modal.title"
+    on-close="vm.closeModal()"
+    on-save="vm.saveUser(user)"
+  >
+  </user-modal>
+</div>

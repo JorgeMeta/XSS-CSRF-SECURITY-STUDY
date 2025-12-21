@@ -1,6 +1,8 @@
 @use "../views/login/login";
 @use "../views/register/register";
 @use "../components/toast/toast";
+@use "../views/home/home";
+@use "../components/user-table/usertable";
 
 * {
   font-family: "Roboto";

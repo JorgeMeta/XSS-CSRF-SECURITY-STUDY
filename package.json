@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "cd app/backend && node server.js",
     "scss": "sass app/styles/main.scss app/styles/main.css --watch"
   },
   "keywords": [],

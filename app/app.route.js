@@ -11,7 +11,7 @@ angular.module("taskManagerApp").config(function ($routeProvider) {
       controllerAs: "vm",
     })
     .when("/home", {
-      templateUrl: "app/views/home.html",
+      templateUrl: "app/views/home/home.html",
       controller: "HomeController",
       controllerAs: "vm",
     })

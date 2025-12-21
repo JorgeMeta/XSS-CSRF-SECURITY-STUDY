@@ -8,12 +8,23 @@ angular.module("taskManagerApp").factory("AuthService", function ($http, $q) {
         return res.data;
       });
     },
-    register(name, email, password) {
+
+    register(name, email, password, csrfToken) {
       if (!name || !email || !password) {
         return $q.reject("Preencha todos os campos");
       }
+
       return $http
-        .post(API, { name, email, password })
+        .post(
+          API,
+          { name, email, password },
+          {
+            headers: {
+              "X-CSRF-Token": csrfToken,
+            },
+            withCredentials: true,
+          }
+        )
         .then(function (res) {
           currentUser = res.data;
           localStorage.setItem("user", JSON.stringify(currentUser));
