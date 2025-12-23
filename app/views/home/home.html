@@ -1,5 +1,9 @@
-<div class="home-container">
-  <h1>Gerenciamento de Usuários</h1>
+<div class="home-container" ng-controller="HomeController as vm">
+  <div class="page-header">
+    <h1>Gerenciamento de Usuários</h1>
+    <!-- Adicione o componente de logout aqui -->
+    <logout-menu></logout-menu>
+  </div>
 
   <!-- Componente de Filtro -->
   <user-filter on-search="vm.handleSearch(text)" on-create="vm.createUser()">
@@ -25,4 +29,13 @@
     on-save="vm.saveUser(user)"
   >
   </user-modal>
+
+  <!--Confirm Modal - ESTE É O IMPORTANTE-->
+  <confirm-modal
+    ng-if="vm.showConfirmModal"
+    resolve="vm.modalConfig"
+    close="vm.modalConfirmed()"
+    dismiss="vm.modalCanceled()"
+  >
+  </confirm-modal>
 </div>

@@ -3,6 +3,20 @@ angular.module("taskManagerApp").factory("AuthService", function ($http, $q) {
   let currentUser = null;
 
   return {
+    isAuthenticated: function () {
+      const user = this.getUser();
+      return user !== null && user !== undefined;
+    },
+
+    // Método auxiliar para verificação rápida
+    checkAuth: function () {
+      if (this.isAuthenticated()) {
+        return $q.resolve(this.getUser());
+      } else {
+        return $q.reject("Usuário não autenticado");
+      }
+    },
+
     loadUsers() {
       return $http.get(API).then(function (res) {
         return res.data;
@@ -36,6 +50,7 @@ angular.module("taskManagerApp").factory("AuthService", function ($http, $q) {
     },
 
     login(email, password) {
+      console.log("email e password", email, password);
       return $http
         .get(`${API}?email=${email}&password=${password}`)
         .then((res) => {

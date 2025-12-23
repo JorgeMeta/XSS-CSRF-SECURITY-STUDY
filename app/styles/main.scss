@@ -2,8 +2,11 @@
 @use "../views/register/register";
 @use "../components/toast/toast";
 @use "../views/home/home";
-@use "../components/user-table/usertable";
-
+@use "../components/user-table/_user-table.component.scss";
+@use "../components/user-filter/user-filter.component";
+@use "../components/confirm-modal/confirm-modal.component.scss";
+@use "../components/user-modal/user-modal";
+@use "../components/logout/logut.component";
 * {
   font-family: "Roboto";
 }

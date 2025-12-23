@@ -1,0 +1,48 @@
+<div class="logout-container">
+  <div class="user-menu">
+    <button class="user-btn" ng-click="$ctrl.toggleMenu($event)">
+      <div class="user-avatar">
+        <i class="material-icons">person</i>
+      </div>
+      <span
+        class="user-name"
+        ng-if="$ctrl.currentUser && $ctrl.currentUser.name"
+      >
+        {{ $ctrl.currentUser.name }}
+      </span>
+      <i class="material-icons menu-arrow">
+        {{ $ctrl.isMenuOpen ? "expand_less" : "expand_more" }}
+      </i>
+    </button>
+
+    <div class="dropdown-menu" ng-class="{ show: $ctrl.isMenuOpen }">
+      <div class="dropdown-header" ng-if="$ctrl.currentUser">
+        <div class="user-info">
+          <div class="avatar-small">
+            <i class="material-icons">person</i>
+          </div>
+          <div>
+            <strong ng-if="$ctrl.currentUser.name">{{
+              $ctrl.currentUser.name
+            }}</strong>
+            <small ng-if="$ctrl.currentUser.email">{{
+              $ctrl.currentUser.email
+            }}</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdown-divider"></div>
+
+      <a href="#" class="dropdown-item" ng-click="$ctrl.viewProfile()">
+        <i class="material-icons">account_circle</i>
+        <span>Meu Perfil</span>
+      </a>
+
+      <a href="#" class="dropdown-item" ng-click="$ctrl.logout()">
+        <i class="material-icons">exit_to_app</i>
+        <span>Sair</span>
+      </a>
+    </div>
+  </div>
+</div>

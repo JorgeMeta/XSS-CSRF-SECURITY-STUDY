@@ -1,32 +1,40 @@
-<div class="filter-contaienr">
+<div class="filter-container">
   <div class="filter-actions">
-    <button class="btn btn-primary" ng-click="vm.onCreate()">
+    <button class="btn btn-primary" ng-click="$ctrl.onCreate()">
       <i class="material-icons">person_add</i>
       <span class="btn-text">Novo Usuário</span>
     </button>
-    <div class="search-continer">
+
+    <div class="search-container">
+      <!-- ← CORRIGIDO: "container" -->
       <div class="search-box">
         <i class="material-icons search-icon">search</i>
         <input
           type="text"
-          ng-model="vm.searchText"
-          ng-keyup="vm.handleKeyPress($event)"
+          ng-model="$ctrl.searchText"
+          ng-keyup="$ctrl.handleKeyPress($event)"
           placeholder="Buscar por nome ou email..."
+          ng-model-options="{debounce: 300}"
         />
+
         <button
           class="btn-clear"
-          ng-if="vm.searchText"
-          ng-click="vm.clear()"
+          ng-if="$ctrl.searchText"
+          ng-click="$ctrl.clear()"
           title="Limpar busca"
         >
           <i class="material-icons">close</i>
         </button>
-        <button class="btn-seach" ng-click="vm.search()" title="Buscar">
+
+        <button class="btn-search" ng-click="$ctrl.search()" title="Buscar">
+          <!-- ← CORRIGIDO: "btn-search" -->
           <i class="material-icons">search</i>
         </button>
       </div>
-      <div class="filter-info" ng-if="vm.serachText">
-        Buscando por: {{ vm.searchText }}
+
+      <div class="filter-info" ng-if="$ctrl.searchText">
+        <!-- ← CORRIGIDO: "searchText" -->
+        Buscando por: "{{ $ctrl.searchText }}"
       </div>
     </div>
   </div>

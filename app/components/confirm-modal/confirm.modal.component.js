@@ -1,5 +1,5 @@
 angular.module("taskManagerApp").component("confirmModal", {
-  templateUrl: "components/confirm-modal/confirm-modal.html",
+  templateUrl: "app/components/confirm-modal/confirm-modal.component.html",
   bindings: {
     resolve: "<",
     close: "&",
@@ -8,6 +8,9 @@ angular.module("taskManagerApp").component("confirmModal", {
   controller: function () {
     var vm = this;
     vm.$onInit = function () {
+      // Verifique se resolve está chegando
+      console.log("🔧 Modal iniciado com resolve:", vm.resolve);
+
       vm.title = vm.resolve.title || "Confirmação";
       vm.message = vm.resolve.message || "Tem certeza que deseja continuar?";
       vm.confirmText = vm.resolve.confirmText || "Confirmar";
@@ -16,10 +19,12 @@ angular.module("taskManagerApp").component("confirmModal", {
     };
 
     vm.confirm = function () {
+      console.log("✅ Botão confirmar clicado");
       vm.close({ $value: true });
     };
 
     vm.cancel = function () {
+      console.log("❌ Botão cancelar clicado");
       vm.dismiss({ $value: "cancel" });
     };
   },

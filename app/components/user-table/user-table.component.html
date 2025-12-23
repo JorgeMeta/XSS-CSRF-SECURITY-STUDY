@@ -2,51 +2,58 @@
   <table class="users-table">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Nome</th>
-        <th>Email</th>
-        <th>Cargo</th>
-        <th>Status</th>
-        <th class="actions-header">Ações</th>
+        <th class="col-id">ID</th>
+        <th class="col-name">Nome</th>
+        <th class="col-email">Email</th>
+        <th class="col-role">Cargo</th>
+        <th class="col-status">Status</th>
+        <th class="col-actions actions-header">Ações</th>
       </tr>
     </thead>
+
     <tbody>
-      <tr ng-if="vm.loading">
+      <!-- Estado de carregamento -->
+      <tr ng-if="$ctrl.loading">
         <td colspan="6" class="loading-cell">
-          <span class="loading-spinner"> Carregando ususários... </span>
+          <span class="loading-spinner"></span>
+          Carregando usuários...
         </td>
       </tr>
-      <tr ng-if="vm.loading && vm.user.length === 0">
+
+      <!-- Estado vazio -->
+      <tr ng-if="!$ctrl.loading && $ctrl.users.length === 0">
         <td colspan="6" class="empty-cell">
           <i class="material-icons">people_outline</i>
-          Nenhum usuário econtrado
+          Nenhum usuário encontrado
         </td>
       </tr>
-      <tr
-        ng-repeat="user in vm.users track by user.id"
-        ng-if="vm.loading && vm.users.length > 0"
-      >
-        <td data-label="ID" class="user-id">
-          <span>#{{ user.id }}</span>
+
+      <!-- Lista de usuários -->
+      <tr ng-repeat="user in $ctrl.users track by user.id">
+        <td class="user-id">
+          <span class="id-badge">#{{ user.id }}</span>
         </td>
-        <td data-label="Nome" class="user-name">
+
+        <td class="user-name">
           <div class="user-avatar">
             <div class="avatar">
-              {{ vm.getInitials(user.name) }}
+              {{ $ctrl.getInitials(user.name) }}
             </div>
             <div class="user-info">
-              <strong>
-                {{ user.name }}
-                <small>{{ vm.formatDate(user.createdAt) }}</small>
-              </strong>
+              <strong>{{ user.name }}</strong>
+              <small ng-if="user.createdAt">
+                Desde {{ $ctrl.formatDate(user.createdAt) }}
+              </small>
             </div>
           </div>
         </td>
-        <td data-label="Email" class="user-email">
+
+        <td class="user-email">
           <i class="material-icons email-icon">email</i>
-          {{ user.email }}
+          <span class="email-text">{{ user.email }}</span>
         </td>
-        <td data-label="Cargo" class="user-role">
+
+        <td class="user-role">
           {{
             user.role === "admin"
               ? "Administrador"
@@ -55,28 +62,34 @@
               : "Usuário"
           }}
         </td>
-        <td>
+
+        <td class="user-status">
           <span class="status-badge" ng-class="user.status">
             {{ user.status === "active" ? "Ativo" : "Inativo" }}
           </span>
         </td>
-        <td data-label="Ações" class="user-actions">
-          <div class="actions-buttons">
-            <button
-              class="btn-action view"
-              ng-click="vm.onEdit({user: user})"
-              title="Editar"
-            >
-              <i class="material-icons">edit</i>
-            </button>
-            <button
-              class="btn-actions delete"
-              ng-click="vm.onDelete({user: user})"
-              title="Excluir"
-            >
-              <i class="material-icons">delete</i>
-            </button>
-          </div>
+
+        <td class="user-actions">
+          <button
+            class="btn-action view"
+            ng-click="$ctrl.onView({ user: user })"
+          >
+            <i class="material-icons">visibility</i>
+          </button>
+
+          <button
+            class="btn-action edit"
+            ng-click="$ctrl.onEdit({ user: user })"
+          >
+            <i class="material-icons">edit</i>
+          </button>
+
+          <button
+            class="btn-action delete"
+            ng-click="$ctrl.onDelete({ user: user })"
+          >
+            <i class="material-icons">delete</i>
+          </button>
         </td>
       </tr>
     </tbody>

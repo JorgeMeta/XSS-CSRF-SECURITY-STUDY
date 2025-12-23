@@ -5,23 +5,24 @@ angular.module("taskManagerApp").factory("ToastService", function ($timeout) {
     type: "info",
   };
 
-  function show(message, type = "error", duration = 3000) {
-    toast.message = message;
-    toast.type = type;
+  function show(options) {
+    // ACEITA OBJETO
+    toast.message = options.message;
+    toast.type = options.type || "info";
     toast.visible = true;
 
     $timeout(() => {
       toast.visible = false;
-    }, duration);
+    }, options.duration || 3000);
   }
 
   return {
     show,
     success(msg) {
-      show(msg, "success");
+      show({ message: msg, type: "success" });
     },
     error(msg) {
-      show(msg, "error");
+      show({ message: msg, type: "error" });
     },
     getToast() {
       return toast;

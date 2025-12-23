@@ -1,73 +1,68 @@
-angular.module("taskManagerApp").service("UserService", function ($http, $q) {
-  var baseUrl = "/api/users";
+angular.module("taskManagerApp").service("UserService", function ($http) {
+  var baseUrl = "http://localhost:3000/company-users";
 
-  this.getAllUsers = function (search) {
-    var params = {};
-    if (search) {
-      params.search = search;
+  this.getAllUsers = function (searchText = "") {
+    let url = baseUrl;
+
+    if (searchText && searchText.trim() !== "") {
+      const searchTerm = searchText.trim().toLowerCase();
+      url = `${baseUrl}?name_like=${encodeURIComponent(
+        searchTerm
+      )}&email_like=${encodeURIComponent(searchTerm)}`;
     }
 
-    // Simulação de API
-    return $q(function (resolve, reject) {
-      setTimeout(function () {
-        var users = [
-          {
-            id: 1,
-            name: "João Silva",
-            email: "joao@email.com",
-            role: "admin",
-            status: "active",
-            createdAt: "2024-01-15T10:30:00Z",
-          },
-          // ... mais usuários
-        ];
-
-        // Filtra se houver busca
-        if (search) {
-          var filtered = users.filter(function (user) {
+    return $http
+      .get(url)
+      .then(function (response) {
+        if (searchText && searchText.trim() !== "") {
+          const term = searchText.trim().toLowerCase();
+          const filteredUsers = response.data.filter((user) => {
             return (
-              user.name.toLowerCase().includes(search.toLowerCase()) ||
-              user.email.toLowerCase().includes(search.toLowerCase())
+              (user.name && user.name.toLowerCase().includes(term)) ||
+              (user.email && user.email.toLowerCase().includes(term))
             );
           });
-          resolve(filtered);
-        } else {
-          resolve(users);
+
+          return filteredUsers;
         }
-      }, 500);
-    });
+
+        return response.data;
+      })
+      .catch(function (error) {
+        throw error;
+      });
   };
 
   this.createUser = function (userData) {
-    return $q(function (resolve) {
-      setTimeout(function () {
-        var newUser = {
-          id: Math.floor(Math.random() * 1000),
-          ...userData,
-          createdAt: new Date().toISOString(),
-        };
-        resolve(newUser);
-      }, 500);
-    });
+    return $http
+      .post(baseUrl, userData)
+      .then(function (response) {
+        return response.data;
+      })
+      .catch(function (error) {
+        throw error;
+      });
   };
 
   this.updateUser = function (id, userData) {
-    return $q(function (resolve) {
-      setTimeout(function () {
-        var updatedUser = {
-          id: id,
-          ...userData,
-        };
-        resolve(updatedUser);
-      }, 500);
-    });
+    return $http
+      .put(`${baseUrl}/${id}`, userData)
+      .then((res) => {
+        return res.data;
+      })
+      .catch(function (error) {
+        throw error;
+      });
   };
 
   this.deleteUser = function (id) {
-    return $q(function (resolve) {
-      setTimeout(function () {
-        resolve({ success: true });
-      }, 500);
-    });
+    return $http
+      .delete(`${baseUrl}/${id}`)
+      .then((res) => {
+        return res.data;
+      })
+      .catch(function (error) {
+        throw error;
+      });
   };
 });

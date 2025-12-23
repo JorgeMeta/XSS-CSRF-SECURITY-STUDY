@@ -8,13 +8,26 @@ angular.module("taskManagerApp").component("userTable", {
     onDelete: "&",
   },
   controller: function () {
-    var vm = this;
+    var $ctrl = this;
 
-    vm.formatDate = function (dateString) {
+    $ctrl.$onInit = function () {
+      console.log("🎬 Tabela INICIALIZADA");
+      console.log("📊 Users no init:", $ctrl.users);
+      console.log("⏳ Loading:", $ctrl.loading);
+    };
+
+    $ctrl.$onChanges = function (changes) {
+      if (changes.users) {
+        console.log("🔄 Users atualizados:", changes.users.currentValue);
+      }
+    };
+
+    $ctrl.formatDate = function (dateString) {
       if (!dateString) return "N/A";
       return new Date(dateString).toLocaleDateString("pt-BR");
     };
-    vm.getInitials = function (name) {
+
+    $ctrl.getInitials = function (name) {
       if (!name) return "??";
       return name
         .split(" ")

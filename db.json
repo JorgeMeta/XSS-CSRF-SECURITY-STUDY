@@ -191,25 +191,37 @@
       "name": "jorge",
       "email": "jorge.attie@email.com",
       "password": "12343"
+    },
+    {
+      "id": "bd26",
+      "name": "tester",
+      "email": "tester@gmail.com",
+      "role": "user",
+      "status": "active"
     }
   ],
   "notes": [],
   "company-users": [
     {
-      "id": "1b55",
-      "name": "jorge",
+      "id": "b006",
+      "name": "Jorge luis attie",
       "email": "attiejorge89@gmail.com",
       "role": "admin",
-      "status": "active",
-      "createdAt": "Fri Dec 19 2025"
+      "status": "active"
     },
     {
-      "id": "0579",
-      "name": "Jorge",
+      "id": "a49f",
+      "name": "Jorge luis attie",
+      "email": "attiejorge89@gmail.com",
+      "role": "manager",
+      "status": "active"
+    },
+    {
+      "id": "3720",
+      "name": "Jorge Luis Attie",
       "email": "attiejorge89@gmail.com",
       "role": "user",
-      "status": "active",
-      "createdAt": "Sat Dec 20 2025"
+      "status": "active"
     }
   ]
 }
