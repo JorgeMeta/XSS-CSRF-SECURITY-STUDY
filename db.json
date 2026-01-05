@@ -198,6 +198,12 @@
       "email": "tester@gmail.com",
       "role": "user",
       "status": "active"
+    },
+    {
+      "id": "741d",
+      "name": "jorge",
+      "email": "jorge1@gmail.com",
+      "hashedPassword": "a01e1d7e7679285ab2dd49116a7ee22dc824fdab7eab7b46f3b7447c3a37cef6"
     }
   ],
   "notes": [],

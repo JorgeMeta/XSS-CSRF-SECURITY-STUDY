@@ -25,6 +25,7 @@ angular
       };
 
       vm.register = function () {
+        alert("oi");
         const csrfToken = generateCrsfToken();
         AuthService.register(vm.name, vm.email, vm.password, csrfToken)
           .then(function () {
